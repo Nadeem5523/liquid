@@ -1,0 +1,306 @@
+<style>
+ .ver_s_left-main {
+    width: 100%;
+    max-width: 675px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-content: end;
+}
+  desktopimage img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    display: flex;
+}
+  .ver_s_inner {
+    display: flex;
+}
+ .ver_s_l-desktopimage img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    display: flex
+;
+}
+  .card_desc p {
+    font-size: 16px;
+    color: #737373;
+    font-weight: 400;
+    line-height: normal;
+}
+  .ver_service_card {
+    display: flex
+;
+    align-items: center;
+    gap: 40px;
+    padding: 77px 120px 77px 48px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D5D5D5;
+    justify-content: space-between;
+}
+  .ver_s-left-text {
+    padding: 5rem 0 0 8rem;
+    width: 80%;
+}
+  .ver_s_l-subheading p {
+    color: #8C0000;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+}
+  .ver_s_l-heading h2 {
+    color: #000000;
+    font-size: 55px;
+    font-weight: 400;
+    line-height: normal;
+}
+  .ver_s_l-heading {
+    padding: 10px 0 48px;
+}
+  .ver_s_l-button a {
+    display: inline-block;
+    padding: 17px 24px;
+    background-color: #8C0000;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #8C0000;
+}
+  .ver_s_card_content h2 {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: normal;
+}
+  .card_desc {
+    padding: 16px 0px 24px;
+}
+  .right_btn {
+    margin-top: 16px;
+}
+  .right_btn a {
+    color: #8C0000;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+    border-bottom: 2px solid #8C0000;
+}
+ .ver_s_right-card {
+    height: 100%;
+    max-height: 970px;
+    border-left: 1px solid #D5D5D5;
+    overflow-y: scroll;
+    width: 100%;
+    max-width: 675px;
+   scrollbar-width: none;
+}
+.ver_s_mobileimage {
+    display: none;
+}
+  .ver_service_card:hover .ver_s_card_icon {
+    transform: rotate(-15deg);
+}
+  .ver_service_card:hover {
+    cursor: pointer;
+}
+    /* Responsive */
+  @media only screen and (max-width: 1240px){
+    .ver_service_card {
+    padding: 65px 58px;
+}
+    .ver_s_l-heading h2 {
+    font-size: 40px;
+}
+    .ver_s-left-text {
+    padding: 2rem 0 0 20px;
+}
+  }
+  @media only screen and (max-width: 980px){
+    .ver_s_inner {
+    flex-direction: column;
+}
+    .ver_s_right-card {
+    border: none;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+    .ver_s_left-main {
+    width: 100%;
+    max-width: 100%;
+}
+    .ver_s-left-text {
+      width: 100%;
+    padding: 0;
+}
+    .ver_s_l-button a {
+    padding: 12px 14px;
+    font-size: 14px;
+}
+    .vertex_service-main {
+    padding: 0px 20px;
+}
+    .ver_s_left-main {
+    padding: 40px 0px;
+}
+   .ver_btn_main {
+    display: grid
+;
+    grid-template-columns: 154px 1fr;
+    align-items: start;
+    gap: 20px;
+}
+    .ver_s_mobileimage {
+    width: 100%;
+       display: block;
+}
+    .ver_s_mobileimage img {
+    width: 100%;
+}
+    .ver_s_l-desktopimage {
+    display: none;
+}
+    .ver_s_card_icon {
+    display: none;
+}
+    .ver_service_card {
+    border-bottom: none;
+}
+    .ver_s_card_content h2 {
+    font-size: 24px;
+    line-height: 28.8px;
+}
+    .card_desc {
+    width: 100%;
+    padding: 0px;
+}
+    .ver_service_card {
+    padding: 24px 0px;
+}
+    .card_desc p {
+    font-size: 15px;
+}
+    .right_btn a {
+    font-size: 16px;
+    line-height: 19.2px;
+}
+  }
+</style>
+<div class="vertex_service-main">
+  <div class="ver_s_pagewidth">
+    <div class="ver_s_inner">
+      <div class="ver_s_left-main">
+        <div class="ver_s-left-text">
+           {% if section.settings['ver_s_l_subheading'] != blank %}
+          <div class="ver_s_l-subheading"><p>{{ section.settings.ver_s_l_subheading }}</p></div>
+          {% endif %}
+           {% if section.settings['ver_s_l_heading'] != blank %}
+          <div class="ver_s_l-heading"><h2>{{ section.settings.ver_s_l_heading }}</h2></div>
+          {% endif %}
+          {% if section.settings['ver_btn_main'] != blank %}
+         <div class="ver_btn_main">
+            <div class="ver_s_l-button"><a href="#">{{ section.settings.ver_s_l_button }}</a>
+               </div>
+            <div class="ver_s_mobileimage">
+             <img src="{{ section.settings.ver_s_l_mobile_image | img_url: "master" }}">
+            </div>
+         </div>
+          {% endif %}
+      </div>
+        {% if section.settings['ver_s_l_desktop_image'] != blank %}
+        <div class="ver_s_l-desktopimage"><img src="{{ section.settings.ver_s_l_desktop_image | img_url: "master" }}">
+          </div>
+        {% endif %}
+    </div>
+      <div class="ver_s_right-card">
+        {% for block in section.blocks %}
+        <div class="ver_service_card">
+          <div class="ver_s_card-content-main">
+            {% if block.settings['ver_card_desc'] != blank %}
+            <div class="ver_s_card_content"><h2>{{ block.settings.ver_card_desc }}</h2></div>
+            {% endif %}
+             {% if block.settings['card_desc'] != blank %}
+          <div class="card_desc"><p>{{ block.settings.card_desc }}</p>
+            <div class="right_btn"><a href="#">{{ block.settings.card_buttn }}</a></div>
+          </div>
+            {% endif %}
+          </div>
+           {% if block.settings['card_icon_image'] != blank %}
+          <div class="ver_s_card_icon"><img src="{{ block.settings.card_icon_image | img_url: "master" }}">
+      </div>
+          {% endif %}
+        </div>
+          {% endfor %}
+  </div>
+</div>
+    </div>
+{% schema %}
+  {
+    "name": "vertex service",
+    "settings": [
+      {
+        "type": "text",
+        "id": "ver_s_l_subheading",
+        "label": "ver service left subheading"
+      },
+      {
+        "type": "text",
+        "id": "ver_s_l_heading",
+        "label": "ver service left heading"
+      },
+      {
+        "type": "text",
+        "id": "ver_s_l_button",
+        "label": "ver service left button"
+      },
+       {
+        "type": "image_picker",
+        "id": "ver_s_l_mobile_image",
+        "label": "select left Mobile image"
+      },
+      {
+        "type": "image_picker",
+        "id": "ver_s_l_desktop_image",
+        "label": "select left desktop image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "ver_s_right-card",
+        "name": "ver_s_right-card",
+        "settings": [
+          {
+            "type": "text",
+            "id": "ver_card_desc",
+            "label": "vertex card descr"
+          },
+           {
+            "type": "text",
+            "id": "card_desc",
+            "label": "card descr"
+          },
+           {
+            "type": "text",
+            "id": "card_buttn",
+            "label": "card button"
+          },
+          {
+            "type": "image_picker",
+            "id": "card_icon_image",
+            "label": "select card icon image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "vertex service"
+      }
+    ]
+  }
+{% endschema %}
