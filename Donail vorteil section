@@ -1,0 +1,143 @@
+<style>
+  *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    }
+    .d_vorteile_main {
+    background: #f1edea;
+    }
+      .d_vorteil_cardlist {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 33%;
+        padding-bottom: 110px;
+    }
+    .d_vorteil_inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .d_vorteile_cardtext p {
+    font-size: 15px;
+    line-height: 19.2px;
+    text-align: center;
+    width: 100%;
+    max-width: 320px;
+    font-family: Satoshi Variable;
+    }
+    .d_vorteilr_heading h3 {
+    font-size: 24px;
+    line-height: 31.2px;
+    text-align: center;
+    font-family: IvyPresto Headline;
+    width: 100%;
+    max-width: 528px;
+    margin: 0 auto;
+    padding: 78px 0px 130px 0px;
+    }
+    .d_vortile_cardimage img {
+    width: 65px;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px){
+    .d_vorteil_inner {
+    flex-direction: column;
+    }
+    .d_vorteil_cardlist {
+    width: 100%;
+    padding: 36px 39px 77px;
+    }
+    .d_vorteilr_heading h3 {
+    padding-bottom: 80px;
+    }
+    .d_vorteile_cardtext p {
+    max-width: 687px;
+    }
+    .d_vorteil_cardlist {
+    width: 100%;
+    padding: 36px 39px 77px;
+    letter-spacing: 0;
+    }
+    }
+     @media(max-width: 480px){
+    .d_vorteile_cardtext p {
+    max-width: 287px;
+    }
+    .d_vorteilr_heading h3 {
+    max-width: 366px;
+    padding: 36px 58px 55px 60px;
+    }
+    .d_vorteil_cardlist {
+    padding-top: 0px;
+    }
+    }
+</style>
+<div class="d_vorteile_main">
+  <div class="d_vortile_containner">
+    <div class="d_vorteilr_heading">
+      <h3>{{ section.settings.d_vorteile_heading }}</h3>
+    </div>
+    <div class="d_vorteil_inner">
+      {% for block in section.blocks -%}
+        <div class="d_vorteil_cardlist">
+          <div class="d_vortile_cardimage">
+            {% if block.settings.d_vorteile_crdimage != blank %}
+              <img class="desktop" src="{{ block.settings.d_vorteile_crdimage | img_url: "master" }}">
+            {% endif %}
+            {% if block.settings.mobile != blank %}
+              <img class="mobile" src="{{ block.settings.mobile | img_url: "master" }}">
+            {% endif %}
+          </div>
+
+          <div class="d_vorteile_cardtext">
+            <p>{{ block.settings.d_card_description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "d_vorteile_main",
+  "settings": [
+    {
+      "type": "text",
+      "id": "d_vorteile_heading",
+      "label": "vorteile heading"
+    }
+  ],
+   "blocks": [
+     {
+       "type": "d_vorteil_cardlist",
+       "name": "d_vorteil_cardlist",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "d_vorteile_crdimage",
+           "label": "Select image"
+         },
+         {
+           "type": "richtext",
+           "id": "d_card_description",
+           "label": "Card Text"
+         },
+         {
+           "type": "image_picker",
+           "id": "mobile",
+           "label": "Select image"
+         }
+       ]
+     }
+   ],
+  "presets": [
+    {
+     "name": "d_vorteile_main"
+    }
+  ]
+}
+{% endschema %}
