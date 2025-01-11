@@ -1,0 +1,169 @@
+<style>
+                .brand_inner {
+                background-color: #c0e4fe;
+                 padding-bottom: 95px;
+                }
+                .brand_pagwidth {
+                max-width: 1350px;
+                margin: 0 auto;
+                }
+                .brand_main{
+                background-image: url(https://cdn.shopify.com/s/files/1/0880/4021/0722/files/cloud_updated.svg?v=1733121929);
+                  background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                min-height: 685px;
+                position: relative;
+                text-align: center;
+                z-index: 1;
+                }
+                .brand_content {
+                position: relative;
+                top: 165px;
+                z-index: -1;
+                box-shadow: -2px 2px 100px 80px rgb(255 255 255);
+                min-height: 314px;
+                }
+                .brand_content::before {
+                content: "";
+                background-image: url(https://cdn.shopify.com/s/files/1/0880/4021/0722/files/Group_306.svg?v=1733123430);
+                width: 200px;
+                height: 275px;
+                left: 90px;
+                top: 110px;
+                position: absolute;
+                background-size: contain;
+                background-repeat: no-repeat;
+                }
+                .brand_content::after{
+                content: '';
+                background-image: url(https://cdn.shopify.com/s/files/1/0880/4021/0722/files/Group_296.svg?v=1733123429);
+                position: absolute;
+                top: -50px;
+                right: 50px;
+                width: 239px;
+                height: 200px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                }
+                .brand_heading {
+                max-width: 50%;
+                margin: 0 auto;
+                text-align: center;
+                }
+                .brand_heading h2 {
+                font-size: 28px;
+                line-height: 36.4px;
+                font-weight: 500;
+                font-style: normal;
+                letter-spacing: 0;
+                margin: 0;
+                color: #000;
+                max-width: 649px;
+                }
+                .brand_desc {
+                max-width: 500px;
+                margin: 30px auto 0;
+                text-align: center;
+                }
+                .brand_desc p {
+                font-size: 18px;
+                line-height: 32.4px;
+                color: rgb(18, 18, 18);
+                letter-spacing: 0.6px;
+                font-weight: 500;
+                font-style: normal;
+                margin: 0;
+                }
+
+                /* Responsive */
+               @media only screen and (max-width: 768px){
+                  .brand_content {
+                  top: 234px;
+                  min-height: 478px;
+                  height: 100%;
+              }
+                  .brand_main {
+                min-height: 922px;
+            }
+            .brand_content::before {
+              left: 139px;
+              top: 580px;
+              height: 200px;
+          }
+            .brand_content::after {
+            top: -218px;
+            right: 24px;
+        }
+          .brand_heading {
+          max-width: 90%;
+      }
+        .brand_heading h2 {
+        max-width: 663px;
+    }
+    .brand_desc {
+      padding: 10px;
+  }
+                }
+  @media only screen and (max-width: 340px){
+    .brand_content::before{
+      left: 80px;
+    }
+  }
+</style>
+<div class="brand_inner">
+  <div class="brand_pagwidth">
+    <div class="brand_main">
+      <div class="brand_content">
+        {% if section.settings.brand_heading != blank %}
+          <div class="brand_heading">
+            <h2>{{ section.settings.brand_heading }}</h2>
+          </div>
+        {% endif %}
+        {% if section.settings.brand_desc != blank %}
+          <div class="brand_desc">
+            <p>{{ section.settings.brand_desc }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "oodie brand",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "brand_bg",
+      "label": "brand background"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_before",
+      "label": "brand before image"
+    },
+    {
+      "type": "text",
+      "id": "brand_heading",
+      "label": "Brand heading",
+    },
+    {
+      "type": "richtext",
+      "id": "brand_desc",
+      "label": "Brand description",
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_after",
+      "label": "brand after image"
+    },
+  ],
+  "presets": [
+    {
+      "name": "oodie brand"
+    }
+  ]
+}
+{% endschema %}
