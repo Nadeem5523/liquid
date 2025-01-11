@@ -1,0 +1,266 @@
+<style>
+              * {
+              padding: 0px;
+              margin: 0px;
+              box-sizing: border-box;
+              overflow: hidden;
+              }
+             .recycle_main-sections--23244637372706__oodie_recycle_jPENG8 {
+              background-color: #c0e4fe;
+              padding: 100px 0px;
+          }
+              .re_main {
+              display: flex;
+              align-items: center;
+              justify-content: space-evenly;
+              gap: 10px;
+              }
+              .recycle_pagewidth {
+              background: #fdf9f6;
+              padding: 45px 4rem 55px;
+              max-width: 1000px;
+              margin: 0 auto;
+              border-radius: 20px;
+              }
+             .meet_page-width::before {
+              background-image: url(https://cdn.shopify.com/s/files/1/0880/4021/0722/files/Cloud-sec.svg?v=1733221115);
+              content: "";
+              position: absolute;
+              width: 200px;
+              height: 120px;
+              background-size: contain;
+              background-repeat: no-repeat;
+              top: 155px;
+              left: -60px;
+          }
+          .meet_page-width::after {
+          content: "";
+          position: absolute;
+          width: 201px;
+          height: 121px;
+          background-image: url(https://cdn.shopify.com/s/files/1/0880/4021/0722/files/cloud-right_1.svg?v=1733223608);
+          top: 233px;
+          right: -59px;
+          background-size: contain;
+          background-repeat: no-repeat;
+      }
+      .rec_inner::after {
+      content: "";
+      background-image: url(https://cdn.shopify.com/s/files/1/0880/4021/0722/files/cloud-right_1.svg?v=1733223608);
+      height: 120px;
+      width: 200px;
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      right: -60px;
+      bottom: -606px;
+  }
+              .re_image {
+              padding: 10px;
+              }
+              .rec_des p {
+              font-size: 18px;
+              line-height: 32px;
+              font-weight: 400;
+              color: rgb(18, 18, 18);
+              font-style: normal;
+              text-decoration: none;
+              }
+              .re_image img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 20px;
+              }
+              .recycle_main {
+              background-color: #c0e4fe;
+              padding: 140px 0px;
+              overflow-x: hidden;
+              }
+              .recycle_head {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              max-width: 55%;
+              margin: 0 auto;
+              }
+              .re_logo img {
+              display: flex;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              }
+              .re_heading h2 {
+              font-size: 30px;
+              font-weight: 700;
+              line-height: 39px;
+              letter-spacing: 0.6px;
+              font-style: normal;
+              }
+              .re_heading h2 em {
+              font-style: normal;
+              background: #f87c56;
+              padding: 0px 7px;
+              }
+              .rec_inner {
+              display: flex;
+              flex-direction: column;
+              gap: 25px;
+              }
+              .re_main.row-reversae {
+              flex-direction: row-reverse;
+              }
+              .re_main.row {
+              flex-direction: row;
+              }
+              @media only screen and (max-width: 768px){
+              .re_main.row.column {
+              flex-direction: column;
+              }
+              .re_main.row.column-reverse {
+              flex-direction: column-reverse;
+              }
+              .recycle_head {
+              max-width: 100%;
+              }
+              .re_heading h2 {
+              font-size: 21px;
+              line-height: 27.3px;
+              }
+              .recycle_pagewidth {
+              max-width: 90%;
+              padding: 45px 1rem 55px;
+              position: relative;
+              z-index: 2;
+              }
+              .rec_des p {
+              font-size: 16px;
+              line-height: 28.8px;
+              }
+              }
+</style>
+<div class="recycle_main">
+  <div class="recycle_pagewidth">
+    <div class="recycle_head">
+      {% if section.settings.logo != blank %}
+        <div class="re_logo">
+          <img src="{{ section.settings.logo | img_url: "master" }}">
+        </div>
+      {% endif %}
+      {% if section.settings.re_heading != blank %}
+        <div class="re_heading">
+          <h2>{{ section.settings.re_heading }}</h2>
+        </div>
+      {% endif %}
+    </div>
+    <div class="rec_inner">
+      {% for block in section.blocks %}
+        <div
+          class="
+            re_main {% if block.settings.flex-direction == "row" %}row {% else %} row-reversae {% endif %}
+            {% if block.settings.flex-direction-mb == "column" %} column {% else %} column-reverse {% endif %}
+          "
+        >
+          {% if block.settings.re_image != blank %}
+            <div class="re_image">
+              <img src="{{ block.settings.re_image | img_url: "master" }}">
+            </div>
+          {% endif %}
+          {% if block.settings.re_description != blank %}
+            <div class="rec_des">
+              <p>{{ block.settings.re_description }}</p>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Oodie recycle",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "select logo image"
+    },
+    {
+      "type": "image_picker",
+      "id": "pagewidth_before",
+      "label": "select pagewidth before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "pagewidth_after",
+      "label": "select pagewidth after image"
+    },
+     {
+      "type": "image_picker",
+      "id": "inner_after",
+      "label": "select pagewidth after image"
+    },
+    {
+      "type": "text",
+      "id": "re_heading",
+      "label": "Recycle heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "rec_inner",
+      "name": "rec_inner",
+      "settings": [
+       {
+  "type": "select",
+  "id": "flex-direction",
+  "label": "Flex direction",
+  "options": [
+    {
+      "value": "row",
+      "label": "Row"
+    },
+    {
+      "value": "row-reverse",
+      "label": "Row-Reverse"
+    }
+  ],
+  "default": "row"
+},
+        {
+          "type": "select",
+          "id": "flex-direction-mb",
+          "label": "Flex direction Mobile",
+          "options": [
+            {
+              "value": "column",
+              "label": "column"
+            },
+             {
+              "value": "column-reverse",
+              "label": "column Reverse"
+            }
+          ],
+          "default": "column"
+        },
+        {
+          "type": "image_picker",
+          "id": "re_image",
+          "label": "select main image"
+        },
+        {
+          "type": "richtext",
+          "id": "re_description",
+          "label": "Recycle Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oodie recycle"
+    }
+  ]
+}
+{% endschema %}
