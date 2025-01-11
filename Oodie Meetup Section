@@ -1,0 +1,133 @@
+<style>
+                      *{
+                        padding: 0px;
+                        margin: 0px;
+                        box-sizing: border-box;
+                      }
+                        .meet_page-width {
+                          max-width: 1330px;
+                          margin: 7rem auto;
+                          padding: 0 4rem;
+                      }
+                      .meet_heading-main {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                        text-align: center;
+                    }
+                    .meet_heading h2 {
+                      font-size: 30px;
+                      line-height: 39px;
+                      color: rgb(61, 66, 70);
+                      font-weight: 700;
+                      letter-spacing: -0.5px;
+                      font-style: normal;
+                  }
+                  .meet_heading .description p {
+                    color: rgb(61, 66, 70);
+                    font-size: 18px;
+                    line-height: 32.4px;
+                    letter-spacing: -0.5px;
+                    font-weight: 400;
+                    font-style: normal;
+                    padding: 0 0 14px;
+                    margin: 0;
+                }
+                .meet_desc p:nth-child(3) {
+                  padding: 14px 0px 0px 0px;
+              }
+              .meet_inner {
+                display: grid
+            ;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+                gap: 10px;
+                padding: 7rem 0 0;
+            }
+            .meet_image img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+          }
+          @media only screen and (max-width: 768px){
+            .meet_inner {
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            padding: 4rem 0 0;
+        }
+            .meet_page-width {
+          margin: 4rem auto;
+          padding: 0 1rem;
+      }
+        .meet_heading h2 {
+        font-size: 21px;
+        line-height: 27.3px;
+    }
+    .meet_desc p {
+      font-size: 16px;
+      line-height: 28.8px;
+  }
+          }
+</style>
+<div class="oodie_meet-main">
+  <div class="meet_page-width">
+    <div class="meet_heading-main">
+      {% if section.settings.meet_heading != blank %}
+        <div class="meet_heading">
+          <h2>{{ section.settings.meet_heading }}</h2>
+        </div>
+      {% endif %}
+      {% if section.settings.meet_desc != blank %}
+        <div class="meet_desc">
+          <p>{{ section.settings.meet_desc }}</p>
+        </div>
+      {% endif %}
+    </div>
+    <div class="meet_inner">
+      {% for block in section.blocks %}
+        <div class="meet_list">
+          {% if block.settings.meet_image != blank %}
+            <div class="meet_image">
+              <img src="{{ block.settings.meet_image | img_url: "master" }}">
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "oodie Meet",
+  "settings": [
+    {
+      "type": "text",
+      "id": "meet_heading",
+      "label": "Meet Heading"
+    },
+     {
+      "type": "richtext",
+      "id": "meet_desc",
+      "label": "Meet Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "meet_inner",
+      "name": "meet_inner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "meet_image",
+          "label": "select Meet image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "oodie Meet"
+    }
+  ]
+}
+{% endschema %}
