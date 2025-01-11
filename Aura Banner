@@ -1,0 +1,185 @@
+<style>
+            .aura_banner-main {
+              background-image: url(https://cdn.shopify.com/s/files/1/0880/4021/0722/files/aura2.jpg?v=1733727171);
+              width: 100%;
+              /* height: 100vh; */
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              position: relative;
+              padding: 95px 0px;
+              opacity: 0.9;
+                  z-index: 2
+            }
+        .aura_banner-main::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: #000;
+          width: 100%;
+          height: 100%;
+          opacity: 0.2;
+          z-index: 2;
+      }
+      /* .aura_banner-text::after {
+        position: absolute;
+        content: "";
+        right: 0;
+        background: #000;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        z-index: 4;
+    } */
+            .aura_banner-inner {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10rem 5rem;
+            }
+            .aura_banner-pagewidth {
+            max-width: 1350px;
+            margin: 0 auto;
+            }
+            .aura_banner-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 54.5rem;
+            background: #0000001a !important;
+            padding: 40px 40px;
+                z-index: 999;
+            }
+            .aura_banner-heading h2 {
+            font-size: 40px;
+            color: #fff;
+            line-height: normal;
+            font-weight: 400;
+            width: 100%;
+            max-width: 463px;
+            }
+            .aura_banner-desc p {
+            font-size: 16px;
+            color: #fff;
+            padding-top: 5px;
+            line-height: 25px;
+            font-family: sans-serif;
+            max-width: 434px;
+            }
+            .aura_banner-btn a {
+            color: #ffffff;
+            font-size: 15px;
+            text-decoration: none;
+            font-family: sans-serif;
+            }
+            .aura_banner-btn {
+            width: 100%;
+            color: #fff;
+            cursor: pointer;
+            transition: all .3s ease;
+            position: relative;
+            outline: none;
+            background: #73a05c;
+            z-index: 1;
+            border: 2px solid #73A05C;
+            opacity: 1;
+            border-radius: 6px;
+            line-height: normal;
+            max-width: 164px;
+            padding: 10px 3px;
+            text-align: center;
+            margin-top: 13px;
+            }
+            .aura_banner-btn:hover {
+              background: #fff;
+          }
+          .aura_banner-btn:hover a {
+            color: #73a050;
+        }
+            @media only screen and (max-width: 768px){
+            .aura_banner-inner {
+            justify-content: center;
+            align-items: center;
+            padding: 10rem 0rem;
+            }
+            .aura_banner-heading h2 {
+            font-size: 20px;
+            text-align: center;
+            }
+            .aura_banner-desc p {
+            font-size: 15px;
+            text-align: center;
+            max-width: 462px;
+            }
+            .aura_banner-btn {
+            max-width: 164px;
+            margin: 12px auto 0;
+            }
+              .aura_banner-main {
+      padding: 40px 0px;
+  }
+               /* .aura_banner-text::after{
+                 display: none;
+
+               } */
+              .aura_banner-main::after{
+                display: none
+              }
+            }
+</style>
+<div class="aura_banner-main">
+  <div class="aura_banner-pagewidth">
+    <div class="aura_banner-inner">
+      <div class="aura_banner-text">
+        {% if section.settings.banner_heading != blank %}
+          <div class="aura_banner-heading">
+            <h2>{{ section.settings.banner_heading }}</h2>
+          </div>
+        {% endif %}
+        {% if section.settings.banner_desc != blank %}
+          <div class="aura_banner-desc">
+            <p>{{ section.settings.banner_desc }}</p>
+          </div>
+        {% endif %}
+        {% if section.settings.button_text != blank %}
+          <div class="aura_banner-btn">
+            <a href="#">{{ section.settings.button_text }}</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Aura banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "aura_banner_bg",
+      "label": "Select banner backgroung image",
+    },
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "banner Heading"
+    },
+    {
+      "type": "text",
+      "id": "banner_desc",
+      "label": "Banner Description"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "button Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aura banner"
+    }
+  ]
+}
+{% endschema %}
